@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/nav_paging_source">
+
+    <fragment
+        android:id="@+id/nav_paging_source"
+        android:name="com.jesusrojo.pagingdemo.paging.ui.fragments.ReposPagingSourceFragment"
+        android:label="@string/ReposPagingSource" />
+
+    <fragment
+        android:id="@+id/nav_remote_mediator"
+        android:name="com.jesusrojo.pagingdemo.paging.ui.fragments.ReposRemoteMediatorFragment"
+        android:label="@string/ReposRemoteMediator" />
+</navigation>

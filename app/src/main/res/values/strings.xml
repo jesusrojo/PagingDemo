@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">PagingDemo</string>
+
+    <string name="error_no_internet">There is not Internet</string>
+
+    <string name="paging_source">PAGING SOURCE</string>
+    <string name="remoteMediator">REMOTE MEDIATOR</string>
+    <string name="ReposPagingSource">Repos PagingSource</string>
+    <string name="ReposRemoteMediator">Repos RemoteMediator</string>
+
+    <string name="retry">Retry</string>
+    <string name="close">Close</string>
+
+    <string name="position">Position</string>
+    <string name="repo_id">REPO ID</string>
+    <string name="repo_name">REPO NAME</string>
+    <string name="author_name">AUTHOR NAME</string>
+    <string name="starts_count">STARS</string>
+    <string name="forks_count">FORKS</string>
+    <string name="details">DETAILS</string>
+    <string name="search_hint">Search repos (contain in name or description)</string>
+
+    <!--GH-->
+    <string name="list_is_empty">List is empty</string>
+    <string name="swipe_down_to_get_fresh_data">Swipe Down the screen to get datas</string>
+
+</resources>

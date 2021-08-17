@@ -1,0 +1,164 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin' // HILT
+    id 'androidx.navigation.safeargs.kotlin' // NAVIGATION SAVE ARGS
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.jesusrojo.pagingdemo"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//      testInstrumentationRunner "com.example.android.hilt.CustomTestRunner" // HILT
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        //https://youtrack.jetbrains.com/issue/KT-27105
+        freeCompilerArgs = freeCompilerArgs + "-Xallow-result-return-type"
+    }
+    testOptions {
+        animationsDisabled = true
+    }
+    buildFeatures{
+        viewBinding true
+        dataBinding = true
+    }
+}
+
+dependencies {
+    // MULTIDEX
+//    implementation 'androidx.multidex:multidex:2.0.1'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+
+//    // PREFERENCES KT
+//    implementation "androidx.preference:preference-ktx:1.1.1"
+//
+//    // CARD VIEW
+//    implementation "androidx.cardview:cardview:1.0.0"
+//
+//    // SWIPE RECYCLER
+//    implementation "androidx.recyclerview:recyclerview:1.2.1"
+//    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+
+    // NAVIGATION Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+
+    // ROOM https://developer.android.com/jetpack/androidx/releases/room
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+    kapt "androidx.room:room-compiler:$room_version"//NEEDS ON TOP apply plugin: 'kotlin-kapt'
+    // optional -Kotlin Extensions & Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+    // optional - Test helpers
+    androidTestImplementation "androidx.room:room-testing:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
+
+
+    //PAGING https://developer.android.com/topic/libraries/architecture/paging/v3-overview
+    def paging_version = "3.1.0-alpha03"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    // alternatively - without Android dependencies for tests
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
+//    // optional - Guava ListenableFuture support
+//    implementation "androidx.paging:paging-guava:$paging_version"
+//    // Jetpack Compose Integration
+//    implementation "androidx.paging:paging-compose:1.0.0-alpha12"
+
+
+    // RETROFIT https://square.github.io/retrofit/
+    def retrofit_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    def okhttp3_version = "4.9.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp3_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
+    implementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // TIMBER https://github.com/JakeWharton/timber
+    def timber_version = "4.7.1"
+    implementation "com.jakewharton.timber:timber:$timber_version"
+
+    // LEAK CANARY
+    def leak_canary_version = "1.6.2"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
+    debugImplementation "com.squareup.leakcanary:leakcanary-support-fragment:$leak_canary_version"
+
+    // GLIDE
+    def glide_version = "4.12.0"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    implementation ('com.github.bumptech.glide:okhttp3-integration:4.4.0'){
+        exclude group: 'glide-parent'
+    }
+
+    // HILT
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    //implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    // HILT testing
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+//    // Make Hilt generate code in the androidTest folder
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+
+    // TEST
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.0'
+    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.1.0'
+    testImplementation 'org.mockito:mockito-inline:2.21.0'
+
+    testImplementation "com.google.truth:truth:1.0.1"
+
+    androidTestImplementation 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    //androidTestImplementation 'com.android.support.test:rules:0.5'
+
+    // BARISTA NEEDS minSdkVersion 19
+    androidTestImplementation('com.schibsted.spain:barista:3.6.0') {
+        exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
+    }
+
+    androidTestImplementation "com.google.truth:truth:1.0.1"
+
+    testImplementation "io.mockk:mockk:1.11.0"
+}

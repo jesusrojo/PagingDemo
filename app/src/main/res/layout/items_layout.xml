@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <EditText
+            android:id="@+id/edit_text_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="textNoSuggestions"
+            android:selectAllOnFocus="true"
+            tools:text="Kotlin"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/text_view_error_items"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center_vertical"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/recycler_view_items"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:visibility="gone"-->
+<!--        android:layout_margin="8dp"-->
+<!--        android:padding="8dp"-->
+<!--        android:background="@color/teal_200"/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_items"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_layout"/>
+<!-- todo ?? app:layoutManager="LinearLayoutManager"-->
+    <!--ERROR java.lang.IllegalArgumentException: LayoutManager androidx.recyclerview.widget.LinearLayoutManager@ac050a0 is already attached to a RecyclerView: androidx.recyclerview.widget.RecyclerView{8334459 VFED.V... .......D 0,126-720,1140 #7f08017b app:id/recycler_view_items}, adapter:androidx.recyclerview.widget.ConcatAdapter@27d681e, layout:androidx.recyclerview.widget.LinearLayoutManager@ac050a0, context:com.jesusrojo.reposclient.MainActivity@996606c
+-->
+
+    <ProgressBar
+        android:id="@+id/progress_bar_items"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!-- ******************** CODELAB todo*************************-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout-->
+<!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--tools:context=".ui.SearchRepositoriesActivity">-->
+<!--<com.google.android.material.textfield.TextInputLayout-->
+<!--    android:id="@+id/input_layout"-->
+<!--    android:layout_width="0dp"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginEnd="8dp"-->
+<!--    android:layout_marginStart="8dp"-->
+<!--    android:layout_marginTop="8dp"-->
+<!--    android:layout_marginLeft="8dp"-->
+<!--    android:layout_marginRight="8dp"-->
+<!--    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--    app:layout_constraintEnd_toEndOf="parent"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toTopOf="parent">-->
+<!--    <EditText-->
+<!--        android:id="@+id/search_repo"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="@string/search_hint"-->
+<!--        android:imeOptions="actionSearch"-->
+<!--        android:inputType="textNoSuggestions"-->
+<!--        android:selectAllOnFocus="true"-->
+<!--        tools:text="Android"/>-->
+<!--</com.google.android.material.textfield.TextInputLayout>-->
+
+<!--<androidx.recyclerview.widget.RecyclerView-->
+<!--    android:id="@+id/list"-->
+<!--    android:layout_width="0dp"-->
+<!--    android:layout_height="0dp"-->
+<!--    android:paddingVertical="@dimen/row_item_margin_vertical"-->
+<!--    android:scrollbars="vertical"-->
+<!--    app:layoutManager="LinearLayoutManager"-->
+<!--    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--    app:layout_constraintEnd_toEndOf="parent"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toBottomOf="@+id/input_layout"-->
+<!--    tools:ignore="UnusedAttribute"/>-->
+
+<!--&lt;!&ndash;step 11&ndash;&gt;-->
+<!--<ProgressBar-->
+<!--    android:id="@+id/progress_bar"-->
+<!--    style="?android:attr/progressBarStyle"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_gravity="center"-->
+<!--    app:layout_constraintLeft_toLeftOf="parent"-->
+<!--    app:layout_constraintRight_toRightOf="parent"-->
+<!--    app:layout_constraintTop_toTopOf="parent"-->
+<!--    app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+<!--<Button-->
+<!--    android:id="@+id/retry_button"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:text="@string/retry"-->
+<!--    app:layout_constraintLeft_toLeftOf="parent"-->
+<!--    app:layout_constraintRight_toRightOf="parent"-->
+<!--    app:layout_constraintTop_toTopOf="parent"-->
+<!--    app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+<!--<TextView android:id="@+id/emptyList"-->
+<!--    android:layout_width="0dp"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:gravity="center"-->
+<!--    android:text="@string/no_results"-->
+<!--    android:textSize="@dimen/repo_name_size"-->
+<!--    android:visibility="gone"-->
+<!--    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--    app:layout_constraintEnd_toEndOf="parent"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toTopOf="parent"/>-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
