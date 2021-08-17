@@ -47,7 +47,7 @@ class GHReposViewHolder(
         binding.positionTv.text = position.toString()
 
         if (avatarUrl != null && avatarUrl.isNotEmpty()) {
-            // Glide.with(binding.ivAvatar.context) // without HILT //todo
+            // Glide.with(binding.ivAvatar.context) // without HILT
             GlideApp.with(binding.avatarIv.context) // with HILT
                 .load(avatarUrl)
                 .into(binding.avatarIv)

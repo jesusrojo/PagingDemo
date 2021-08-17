@@ -3,7 +3,7 @@ package com.jesusrojo.pagingdemo.ghrepos.presentation.hilt
 
 import com.jesusrojo.pagingdemo.ghrepos.data.api.GHReposAPIService
 import com.jesusrojo.pagingdemo.ghrepos.data.db.GHReposDAO
-import com.jesusrojo.pagingdemo.ghrepos.data.repository.GHRepoRepositoryImpl
+import com.jesusrojo.pagingdemo.ghrepos.data.repository.GHReposRepositoryImpl
 import com.jesusrojo.pagingdemo.ghrepos.data.repository.datasource.GHReposCacheDataSource
 import com.jesusrojo.pagingdemo.ghrepos.data.repository.datasource.GHReposLocalDataSource
 import com.jesusrojo.pagingdemo.ghrepos.data.repository.datasource.GHReposRemoteDataSource
@@ -30,7 +30,7 @@ class RepositoryModule {
         remoteDataSource: GHReposRemoteDataSource,
         mapper: MapperRawToEnty
     ): GHReposRepository {
-        return GHRepoRepositoryImpl(
+        return GHReposRepositoryImpl(
             remoteDataSource, localDataSource, cacheDataSource, mapper
         )
     }
