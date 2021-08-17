@@ -21,6 +21,9 @@ import com.jesusrojo.pagingdemo.utils.hideSoftKeyboard
 
 abstract class BaseFragment : Fragment() {
 
+    protected val DEFAULT_QUERY: String = "Kotlin"
+    protected var LAST_SEARCH_QUERY: String? = null
+    protected var LAST_SEARCH_QUERY_KEY: String = "LAST_SEARCH_QUERY_KEY"
     protected lateinit var binding: ItemsLayoutBinding
     protected val linearLayoutManager: LinearLayoutManager by lazy {
         LinearLayoutManager(requireContext())
@@ -45,6 +48,11 @@ abstract class BaseFragment : Fragment() {
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(LAST_SEARCH_QUERY_KEY, LAST_SEARCH_QUERY)
+    }
+
     protected fun handleMyState(loadState: CombinedLoadStates) {
         DebugHelp.l("handleMyState $loadState")
 
@@ -60,25 +68,13 @@ abstract class BaseFragment : Fragment() {
             ?: loadState.append as? LoadState.Error // RemoteMediator loadstate
             ?: loadState.prepend as? LoadState.Error // RemoteMediator loadstate
 
-//        binding.textViewErrorItems.visibility = View.GONE
 
         errorState?.let {
             val message = it.error.message.toString()
             DebugHelp.l("ERROR $message")
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-//            showErrorSnackBar(message)
-//            binding.textViewErrorItems.visibility = View.VISIBLE
-//            binding.textViewErrorItems.text = it.error.message.toString()
         }
     }
-
-    private fun showErrorSnackBar(message: String) {
-        AppHelper.showErrorSnackBar(
-            binding.progressBarItems,
-            requireContext(),
-            message)
-    }
-
 
     // SEARCH
     protected fun initEditText(query: String) {
@@ -117,7 +113,9 @@ abstract class BaseFragment : Fragment() {
     private fun updateRepoListFromInput() {
         binding.editTextSearch.text.trim().let {
             if (it.isNotEmpty()) {
-                search(it.toString())
+                val query = it.toString()
+                search(query)
+                LAST_SEARCH_QUERY = query
             }
         }
     }

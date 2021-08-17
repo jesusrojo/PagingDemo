@@ -20,7 +20,7 @@ import com.jesusrojo.pagingdemo.ghrepos.MainGHReposActivity
 import com.jesusrojo.pagingdemo.utils.startMyActivity
 
 
-class ReposPagingSourceFragment : BaseFragment() {
+class ReposPagingSourceFragment: BaseFragment() {
 
     private lateinit var pagingDataAdapter: ReposPagingDataAdapter
     private lateinit var viewModel: ReposViewModel
@@ -54,12 +54,9 @@ class ReposPagingSourceFragment : BaseFragment() {
         viewModel = Injection.getReposViewModel(requireActivity() as AppCompatActivity)
 
         //SEARCH
-        // TODO val query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
-        val query = "kotlin"
+        val query = savedInstanceState?.getString(LAST_SEARCH_QUERY_KEY) ?: DEFAULT_QUERY
         initEditText(query)
         search(query)
-
-        //observeDataFromViewModel()
     }
 
     override fun search(query: String) {
@@ -71,16 +68,6 @@ class ReposPagingSourceFragment : BaseFragment() {
             }
         }
     }
-
-//    private fun observeDataFromViewModel() {
-//        lifecycleScope.launch {
-//            viewModel.getDatas()
-//                .collectLatest {
-//                    DebugHelp.l("observe and submitData...")
-//                    pagingDataAdapter.submitData(lifecycle, it)
-//                }
-//        }
-//    }
 
     //MENU
     override fun onCreate(savedInstanceState: Bundle?) {
