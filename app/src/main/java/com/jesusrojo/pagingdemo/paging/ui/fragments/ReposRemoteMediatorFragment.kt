@@ -40,8 +40,8 @@ class ReposRemoteMediatorFragment: BaseFragment() {
 
         binding.recyclerViewItems.adapter =
             uiModelAdapter.withLoadStateHeaderAndFooter(
-//                    header = ReposLoadStateAdapter{ remoteMediatorAdapter.retry() },
-//                    footer = ReposLoadStateAdapter{ remoteMediatorAdapter.retry() }
+                    ////header = ReposLoadStateAdapter{ remoteMediatorAdapter.retry() },
+                    ////footer = ReposLoadStateAdapter{ remoteMediatorAdapter.retry() }
                       header = ReposLoadStateAdapter{ uiModelAdapter.retry() },
                      footer = ReposLoadStateAdapter{ uiModelAdapter.retry() }
                 )
@@ -53,12 +53,9 @@ class ReposRemoteMediatorFragment: BaseFragment() {
         viewModel = Injection.getReposRemoteMediatorViewModel(requireActivity() as AppCompatActivity)
 
         //SEARCH
-        // TODO val query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
-        val query = "kotlin"
+        val query = savedInstanceState?.getString(LAST_SEARCH_QUERY_KEY) ?: DEFAULT_QUERY
         initEditText(query)
         search(query)
-
-        //observeDataFromViewModel()
     }
 
     @ExperimentalPagingApi
@@ -71,15 +68,4 @@ class ReposRemoteMediatorFragment: BaseFragment() {
             }
         }
     }
-
-//    @ExperimentalPagingApi
-//    private fun observeDataFromViewModel(){
-//        lifecycleScope.launch {
-//            viewModel.getDatas()
-//                .collectLatest {
-//                    DebugHelp.l("observe, submitData...")
-//                    uiModelAdapter.submitData(lifecycle,it)
-//                }
-//        }
-//    }
 }

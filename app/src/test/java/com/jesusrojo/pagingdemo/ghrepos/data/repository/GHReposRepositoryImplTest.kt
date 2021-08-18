@@ -14,7 +14,7 @@ import org.junit.Test
 import retrofit2.Response
 
 
-class GHRepoRepositoryImplTest: BaseUnitTest() {
+class GHReposRepositoryImplTest: BaseUnitTest() {
 
     private val remoteDataSource: GHReposRemoteDataSource = mock()
     private val localDataSource: GHReposLocalDataSource = mock()
@@ -25,11 +25,11 @@ class GHRepoRepositoryImplTest: BaseUnitTest() {
     private val result = GHReposList(datas)
     private val response: Response<GHReposList> = Response.success(result)
 
-    private val sut = GHRepoRepositoryImpl(remoteDataSource, localDataSource, cacheDataSource, mapper)
+    private val sut = GHReposRepositoryImpl(remoteDataSource, localDataSource, cacheDataSource, mapper)
     private val page = 1
 
 //    @Test
-//    fun fetchGHRepos_callCache() = //todo null pointer
+//    fun fetchGHRepos_callCache() = // FAIL null pointer
 //        coroutinesTestRule.testDispatcher.runBlockingTest {
 //            SUT.fetchGHRepos(page)
 //            verify(cacheDataSource, times(1)).fetchGHReposFromCache()

@@ -13,7 +13,6 @@ class GHReposAdapter() : RecyclerView.Adapter<GHReposViewHolder>() {
     private lateinit var listener: (GHRepo) -> Unit
 
     private var values: ArrayList<GHRepo> = arrayListOf()
-    //    private var values: List<GHRepo> = emptyList()//todo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GHReposViewHolder {
         val binding = ItemLayoutBinding

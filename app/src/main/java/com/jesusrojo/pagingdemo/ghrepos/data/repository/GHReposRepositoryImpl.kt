@@ -11,7 +11,7 @@ import com.jesusrojo.pagingdemo.utils.DebugHelp
 import javax.inject.Inject
 
 
-class GHRepoRepositoryImpl @Inject constructor( //todo rename GHRepos
+class GHReposRepositoryImpl @Inject constructor(
     private val remoteDataSource: GHReposRemoteDataSource,
     private val localDataSource: GHReposLocalDataSource,
     private val cacheDataSource: GHReposCacheDataSource,

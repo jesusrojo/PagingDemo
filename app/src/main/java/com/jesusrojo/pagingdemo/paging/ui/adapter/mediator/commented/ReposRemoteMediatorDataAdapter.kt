@@ -32,7 +32,7 @@
 //
 //        fun onBind(data: RepoEnty, position: Int) {
 //            binding.lbPosition.text = position.toString()
-//            binding.lbTaskId.text = "ReposMediatorViewHolder"// todo
+//            binding.lbTaskId.text = "ReposMediatorViewHolder"
 //            binding.lbUserId.text = data.repoName
 //            binding.lbTitle.text = data.toString()
 //        }
