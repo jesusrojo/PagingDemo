@@ -14,7 +14,6 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jesusrojo.pagingdemo.R
 import com.jesusrojo.pagingdemo.databinding.ItemsLayoutBinding
-import com.jesusrojo.pagingdemo.utils.AppHelper
 import com.jesusrojo.pagingdemo.utils.DebugHelp
 import com.jesusrojo.pagingdemo.utils.InternetHelp
 import com.jesusrojo.pagingdemo.utils.hideSoftKeyboard
