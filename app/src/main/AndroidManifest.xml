@@ -24,9 +24,5 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.jesusrojo.pagingdemo.ghrepos.MainGHReposActivity"
-            android:theme="@style/Theme.MyThemeGHRepos" />
-
     </application>
-
 </manifest>
