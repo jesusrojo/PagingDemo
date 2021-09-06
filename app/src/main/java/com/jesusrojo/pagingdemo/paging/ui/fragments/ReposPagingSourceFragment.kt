@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 import android.view.MenuInflater
-import com.jesusrojo.pagingdemo.ghrepos.MainGHReposActivity
 import com.jesusrojo.pagingdemo.utils.startMyActivity
 
 
@@ -67,26 +66,5 @@ class ReposPagingSourceFragment: BaseFragment() {
                 pagingDataAdapter.submitData(lifecycle, it)
             }
         }
-    }
-
-    //MENU
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_top_right_main, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_item_1 -> {
-                requireActivity().startMyActivity<MainGHReposActivity>()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 }
